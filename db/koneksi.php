@@ -3,7 +3,7 @@
 	$host     = 'localhost';
 	$user     = 'root';
   $password = '';
-  $db       = 'spkmotor';
+  $db       = 'spk_motor';
 
 	$konek = new mysqli($host,$user,$password,$db);
   if ($konek->connect_errno) {

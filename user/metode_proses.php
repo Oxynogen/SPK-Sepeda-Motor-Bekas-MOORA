@@ -128,13 +128,14 @@
 
 <?php
 if (isset($_POST['proses'])) { 
-  $kondisi    = $_POST['inpkondisi'];
-  $tahun      = $_POST['inptahun'];
-  $mesin      = $_POST['inpmesin'];
-  $harga      = $_POST['inpharga'];
-  $jarak      = $_POST['inpjarak'];
+  $kondisi = $_POST['inpkondisi'];
+  $tahun   = $_POST['inptahun'];
+  $mesin   = $_POST['inpmesin'];
+  $harga   = $_POST['inpharga'];
+  $jarak   = $_POST['inpjarak'];
 
-  $sql    = "SELECT * FROM data_motor ORDER BY ABS(kondisi - '$kondisi') AND ABS(tahun - '$tahun') AND ABS(mesin - '$mesin') AND ABS(harga - '$harga') AND ABS(jarak - '$jarak') LIMIT 5";
+  // $sql    = "SELECT * FROM data_motor ORDER BY ABS(kondisi - '$kondisi') AND ABS(tahun - '$tahun') AND ABS(mesin - '$mesin') AND ABS(harga - '$harga') AND ABS(jarak - '$jarak') LIMIT 5";
+  $sql = "SELECT *  FROM data_motor WHERE ( kondisi = '$kondisi' AND tahun = '$tahun' ) OR mesin = '$mesin' AND ( harga <= '$harga' AND jarak <= '$jarak' ) LIMIT 5";
   $result = $konek->query($sql);
   $no     = 1;
 
