@@ -55,28 +55,24 @@ foreach($kriteria as $id_kriteria=>$k){
 }
 //-- menyiapkan variabel untuk menyimpan data yang sudah dioptimasi
 
-
-$bobot=array();
+$bobot = array();
 foreach($kriteria as $k=>$vk ){
-    $bobot[$k]=$vk[2];
-    $jml_bobot=array_sum($bobot);
+    $bobot[$k] = $vk[2];
+    $jml_bobot = array_sum($bobot);
 }
-$w=array();  
+$w = array();  
 foreach($bobot as $k=>$b){
-    $w[$k]=$b/$jml_bobot;
+    $w[$k] = $b/$jml_bobot;
 }
-$jml_normal_bobot=array_sum($w);
+$jml_normal_bobot = array_sum($w);
 
-
-$optimasi=array();
+$optimasi = [];
 foreach($alternatif as $id_alternatif=>$a){
    $optimasi[$id_alternatif] = 0;
-   foreach($kriteria as $id_kriteria => $k){
-     $optimasi[$id_alternatif] += $normal[$id_alternatif][$id_kriteria] * ($k[1] == 'Benefit' ? 1 : -1) * $w[2];
-   }
+   foreach ($kriteria as $key_kriteria => $val_kriteria) {
+    $optimasi[$id_alternatif] += $normal[$id_alternatif][$key_kriteria] * ($val_kriteria[1] == 'Benefit' ? 1 : -1) * $w[$key_kriteria];
+  }
 }
-
-
 ?>
 
 <br />
